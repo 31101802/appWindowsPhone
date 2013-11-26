@@ -56,7 +56,8 @@ namespace QuierobesarteApp.Views
 
             if (NavigationContext.QueryString.TryGetValue("weddingId", out _weddingId))
             {
-                await AddItems(1);
+                _pageNumber = 1;
+                await AddItems(_pageNumber);
 
             }
         }
@@ -67,7 +68,7 @@ namespace QuierobesarteApp.Views
 
 
             HttpResponseMessage getresponse = await client.GetAsync("http://" + App.baseUrl + "/api/images/" +
-                HttpUtility.UrlEncode(_weddingId) + "?page=" + (_pageNumber - 1) + "&numItems=" + _offsetKnob);
+                HttpUtility.UrlEncode(_weddingId) + "?page=" + (page - 1) + "&numItems=" + _offsetKnob);
             string json = await getresponse.Content.ReadAsStringAsync();
             var images = JsonConvert.DeserializeObject<List<ImageDto>>(json);
             images = images.OrderBy(i => i.created).ToList();
