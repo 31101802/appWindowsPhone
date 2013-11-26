@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="QuierobesarteApp.Views.Footer"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="73.548" d:DesignWidth="250.323">
+
+    <Grid x:Name="LayoutRoot">
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+            <Button x:Name="btnFacebook" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="{x:Null}" BorderThickness="0" Height="80" Width="80" Command="{Binding OpenUrlInBrowserCommand, Mode=OneWay}" Tag="http://facebook.com/quierobesarte.es" CommandParameter="{Binding Tag, ElementName=btnFacebook}">
+                <Button.Background>
+                    <ImageBrush Stretch="Uniform" ImageSource="/Assets/facebook_gray.png"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="btnTwitter" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="{x:Null}" BorderThickness="0" Height="80" Width="80" Command="{Binding OpenUrlInBrowserCommand, Mode=OneWay}"  CommandParameter="{Binding Tag, ElementName=btnTwitter}" Tag="https://twitter.com/QuierobesarteES">
+                <Button.Background>
+                    <ImageBrush Stretch="Uniform" ImageSource="/Assets/twitter_gray.png"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="btnVimeo" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="{x:Null}" BorderThickness="0" Height="80" Width="80" Command="{Binding OpenUrlInBrowserCommand, Mode=OneWay}"  CommandParameter="{Binding Tag, ElementName=btnVimeo}" Tag="http://vimeo.com/quierobesarte">
+                <Button.Background>
+                    <ImageBrush Stretch="Uniform" ImageSource="/Assets/vimeo_gray.png"/>
+                </Button.Background>
+            </Button>
+
+        </StackPanel>
+
+    </Grid>
+</UserControl>

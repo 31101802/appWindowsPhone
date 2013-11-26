@@ -1,0 +1,84 @@
+﻿<phone:PhoneApplicationPage
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ViewModel="clr-namespace:QuierobesarteApp.ViewModel"
+    xmlns:local="clr-namespace:QuierobesarteApp.Views"
+    x:Class="QuierobesarteApp.Views.UploaderPage"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True" DataContext="{Binding Main, Mode=OneWay, Source={StaticResource Locator}}">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot">
+        <Grid.Background>
+            <ImageBrush Stretch="Fill" ImageSource="/Assets/background.png"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.RowSpan="2">
+
+            <StackPanel Orientation="Horizontal">
+                <Grid HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="160" RenderTransformOrigin="0.5,0.5">
+                    <Grid.Background>
+                        <ImageBrush Stretch="None" ImageSource="/Assets/backgroundHead.png">
+                            <ImageBrush.RelativeTransform>
+                                <CompositeTransform/>
+                            </ImageBrush.RelativeTransform>
+                        </ImageBrush>
+                    </Grid.Background>
+                </Grid>
+                <Grid HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="160" RenderTransformOrigin="0.5,0.5">
+                    <Grid.Background>
+                        <ImageBrush Stretch="None" ImageSource="/Assets/backgroundHead.png">
+                            <ImageBrush.RelativeTransform>
+                                <CompositeTransform/>
+                            </ImageBrush.RelativeTransform>
+                        </ImageBrush>
+                    </Grid.Background>
+                </Grid>
+                <Grid HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="160" RenderTransformOrigin="0.5,0.5">
+                    <Grid.Background>
+                        <ImageBrush Stretch="None" ImageSource="/Assets/backgroundHead.png">
+                            <ImageBrush.RelativeTransform>
+                                <CompositeTransform/>
+                            </ImageBrush.RelativeTransform>
+                        </ImageBrush>
+                    </Grid.Background>
+                </Grid>
+
+            </StackPanel>
+
+            <Image Source="/Assets/Tiles/FlipCycleTileMedium.png" Grid.Row="0" IsHitTestVisible="False" VerticalAlignment="Top" HorizontalAlignment="Center" Width="200" Margin="0,-10,0,0" />
+
+        </Grid>
+
+        <StackPanel x:Name="uploaderPanel" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,300,0,0">
+            <Button x:Name="btnUploadImage" Content="Subir foto" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#FFD93601" BorderBrush="#FFD93600" Width="160" Click="Button_Click" Height="100" Visibility="{Binding IsWeddingActive}"/>
+            <Button x:Name="btnViewImages" Content="Ver fotos" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#FFD93601" Width="160" Click="btnViewImages_Click" Height="100" BorderBrush="#FFDA3700" />
+
+        </StackPanel>
+        <TextBlock HorizontalAlignment="Center" Grid.Row="1" TextWrapping="Wrap" Text="{Binding CurrentWedding.Name}" VerticalAlignment="Top" FontFamily="Segoe WP Semibold" Foreground="#FFDA3700" Margin="0,210,0,0" FontSize="24"/>
+        <ProgressBar x:Name="progressBar" Height="30" Grid.Row="1" VerticalAlignment="Top" Width="204" IsIndeterminate="True" FontSize="36" HorizontalAlignment="Center" Margin="0,250,0,0"/>
+        <Grid x:Name="pnlUserName" Margin="0,0,0,70" Grid.RowSpan="2" Visibility="{Binding IsUserPanelVisivility, Mode=OneWay}">
+            <TextBox x:Name="txbUserName" Height="72" TextWrapping="Wrap" VerticalAlignment="Bottom" Margin="28,0" LostFocus="txbUserName_LostFocus"/>
+            <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Bottom" FontFamily="Segoe WP " Foreground="#FFDA3700" FontSize="20" Text="Si quieres puedes decirnos como te llamas, asi los demas podran saber cuales son tus fotos" Width="436" Margin="0,0,0,73"/>
+
+        </Grid>
+
+        <local:Footer HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.Row="1"/>
+
+        <!--TitlePanel contains the name of the application and page title-->
+
+        <!--ContentPanel - place additional content here-->
+    </Grid>
+
+</phone:PhoneApplicationPage>
