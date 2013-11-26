@@ -96,7 +96,7 @@ namespace QuierobesarteApp.Views
         {
             Dispatcher.BeginInvoke(() =>
             {
-                NavigationService.Navigate(new Uri("/Views/ImageDetailPage2.xaml", UriKind.Relative));
+                NavigationService.Navigate(new Uri("/Views/ImageDetailPage.xaml", UriKind.Relative));
             });
         }
 

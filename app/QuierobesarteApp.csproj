@@ -115,9 +115,6 @@
     <Compile Include="Views\Footer.xaml.cs">
       <DependentUpon>Footer.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ImageDetailPage2.xaml.cs">
-      <DependentUpon>ImageDetailPage2.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\ImageDetailPage.xaml.cs">
       <DependentUpon>ImageDetailPage.xaml</DependentUpon>
     </Compile>
@@ -140,10 +137,6 @@
     <Page Include="Views\Footer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\ImageDetailPage2.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\ImageDetailPage.xaml">
       <SubType>Designer</SubType>
@@ -172,7 +165,6 @@
     </Content>
     <Content Include="Assets\background.png" />
     <Content Include="Assets\backgroundHead.png" />
-    <Content Include="Assets\bg-head.png" />
     <Content Include="Assets\facebook_gray.png" />
     <Content Include="Assets\facebook_orange.png" />
     <Content Include="Assets\sprite-redes.png" />
@@ -217,9 +209,8 @@
     <Reference Include="Microsoft.Practices.ServiceLocation">
       <HintPath>..\packages\MvvmLightLibs.4.2.30.0\lib\wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Newtonsoft.Json.5.0.8\lib\portable-net45+wp80+win8\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\portable-net45+wp80+win8\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http">
       <HintPath>..\packages\Microsoft.Net.Http.2.2.18\lib\sl4-windowsphone71\System.Net.Http.dll</HintPath>
