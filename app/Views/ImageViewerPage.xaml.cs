@@ -49,7 +49,6 @@ namespace QuierobesarteApp.Views
                         _pageNumber++;
                         await AddItems(_pageNumber);
                         //_isLoading = false;
-
                     }
                 }
             }
@@ -62,14 +61,25 @@ namespace QuierobesarteApp.Views
         {
             base.OnNavigatedTo(e);
 
+       
+
             NavigationContext.QueryString.TryGetValue("weddingId", out _weddingId);
 
             if (LongList.ItemsSource == null || (LongList.ItemsSource != null && LongList.ItemsSource.Count == 0))
             {
+                Dispatcher.BeginInvoke(() =>
+                {
+                    progressBar.Visibility = System.Windows.Visibility.Visible;
+                });
+
                 var mainViewModel = ServiceLocator.Current.GetInstance<MainViewModel>();
                 mainViewModel.Images.Clear();
                 _pageNumber = 1;
                 await AddItems(_pageNumber);
+                Dispatcher.BeginInvoke(() =>
+                {
+                    progressBar.Visibility = System.Windows.Visibility.Collapsed;
+                });
             }
         }
 
@@ -120,10 +130,6 @@ namespace QuierobesarteApp.Views
         }
 
 
-        private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
-        {
-            progressBar.Visibility = System.Windows.Visibility.Collapsed;
-        }
 
 
 

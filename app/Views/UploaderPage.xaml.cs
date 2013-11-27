@@ -119,11 +119,12 @@ namespace QuierobesarteApp.Views
 
         private async void UploadFile(MemoryStream ms)
         {
-
-            btnUploadImage.IsEnabled = false;
-            btnViewImages.IsEnabled = false;
-            progressBar.Visibility = System.Windows.Visibility.Visible;
-            // Make sure there is a picture selected
+            Dispatcher.BeginInvoke(() =>
+            {
+                btnUploadImage.IsEnabled = false;
+                btnViewImages.IsEnabled = false;
+                progressBar.Visibility = System.Windows.Visibility.Visible;
+            });
 
 
 
