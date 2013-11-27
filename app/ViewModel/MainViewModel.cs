@@ -11,6 +11,7 @@ using System.Windows.Threading;
 
 namespace QuierobesarteApp.ViewModel
 {
+
     /// <summary>
     /// This class contains properties that the main View can data bind to.
     /// <para>
