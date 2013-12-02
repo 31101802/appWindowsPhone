@@ -83,35 +83,45 @@ namespace QuierobesarteApp.Views
         {
             if (e.TaskResult == TaskResult.OK)
             {
-                _fileName = e.OriginalFileName;
-
-
-                BitmapImage bitmapImage = new BitmapImage();
-                bitmapImage.SetSource(e.ChosenPhoto);
-                decimal resizeWidth;
-                decimal resizeHeight;
-                decimal ratio;
-
-                if (bitmapImage.PixelWidth > bitmapImage.PixelHeight)
+                if (MessageBox.Show("¿Estas seguro que quieres subir la foto?", string.Empty, MessageBoxButton.OKCancel) == MessageBoxResult.OK)
                 {
-                    ratio = (decimal)bitmapImage.PixelWidth / (decimal)bitmapImage.PixelHeight;
-                    resizeWidth = 1920;
-                    resizeHeight = 1920 / ratio;
+                    _fileName = e.OriginalFileName;
+
+
+                    BitmapImage bitmapImage = new BitmapImage();
+                    bitmapImage.SetSource(e.ChosenPhoto);
+                    decimal resizeWidth;
+                    decimal resizeHeight;
+                    decimal ratio;
+
+                    if (bitmapImage.PixelWidth > bitmapImage.PixelHeight)
+                    {
+                        ratio = (decimal)bitmapImage.PixelWidth / (decimal)bitmapImage.PixelHeight;
+                        resizeWidth = 1920;
+                        resizeHeight = 1920 / ratio;
+                    }
+                    else
+                    {
+                        ratio = (decimal)bitmapImage.PixelHeight / (decimal)bitmapImage.PixelWidth;
+                        resizeHeight = 1920;
+                        resizeWidth = 1920 / ratio;
+                    }
+
+
+                    //Delete Sentences
+
+
+                    WriteableBitmap writeableBitmap = new WriteableBitmap(bitmapImage);
+                    MemoryStream ms = new MemoryStream();
+                    writeableBitmap.SaveJpeg(ms, (int)resizeWidth, (int)resizeHeight, 0, 80);
+                    UploadFile(ms);
+
                 }
                 else
                 {
-                    ratio = (decimal)bitmapImage.PixelHeight / (decimal)bitmapImage.PixelWidth;
-                    resizeHeight = 1920;
-                    resizeWidth = 1920 / ratio;
+                    _photoChooserTask.Show();
+                    //NavigationService.GoBack();
                 }
-
-
-
-                WriteableBitmap writeableBitmap = new WriteableBitmap(bitmapImage);
-                MemoryStream ms = new MemoryStream();
-                writeableBitmap.SaveJpeg(ms, (int)resizeWidth, (int)resizeHeight, 0, 80);
-                UploadFile(ms);
-
 
 
             }
@@ -176,7 +186,7 @@ namespace QuierobesarteApp.Views
 
         }
 
-    
+
 
 
 
