@@ -62,9 +62,10 @@
         </Grid>
 
         <StackPanel x:Name="uploaderPanel" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,300,0,0">
-            <Button x:Name="btnUploadImage" Content="Subir foto" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#FFD93601" BorderBrush="#FFD93600" Width="160" Click="Button_Click" Height="100" Visibility="{Binding IsWeddingActive}"/>
             <Button x:Name="btnViewImages" Content="Ver fotos" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#FFD93601" Width="160" Click="btnViewImages_Click" Height="100" BorderBrush="#FFDA3700" />
 
+            <Button x:Name="btnUploadImage" Content="Subir foto" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#FFD93601" BorderBrush="#FFD93600" Width="160" Click="Button_Click" Height="100" Visibility="{Binding IsWeddingActive}"/>
+           
         </StackPanel>
         <TextBlock HorizontalAlignment="Center" Grid.Row="1" TextWrapping="Wrap" Text="{Binding CurrentWedding.Name}" VerticalAlignment="Top" FontFamily="Segoe WP Semibold" Foreground="#FFDA3700" Margin="0,210,0,0" FontSize="24"/>
         <ProgressBar x:Name="progressBar" Height="30" Grid.Row="1" VerticalAlignment="Top" Width="204" IsIndeterminate="True" FontSize="36" HorizontalAlignment="Center" Margin="0,250,0,0"/>

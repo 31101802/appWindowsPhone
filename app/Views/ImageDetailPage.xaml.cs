@@ -24,7 +24,6 @@ namespace QuierobesarteApp.Views
             InitializeComponent();
 
             progressBar.Visibility = System.Windows.Visibility.Collapsed;
-            BuildLocalizedApplicationBar();
         }
 
         private void SaveCurrentImage()
@@ -66,27 +65,21 @@ namespace QuierobesarteApp.Views
             isolatedStorageFileStream.Close();
 
             progressBar.Visibility = System.Windows.Visibility.Collapsed;
+
+            MessageBox.Show("La foto ha sido guardada correctamente.", string.Empty, MessageBoxButton.OK);
+          
           
         }
 
-        // Sample code for building a localized ApplicationBar
-        private void BuildLocalizedApplicationBar()
-        {
-            // Set the page's ApplicationBar to a new instance of ApplicationBar.
-            ApplicationBar = new ApplicationBar();
+       
 
+      
 
-
-            // Create a new menu item with the localized string from AppResources.
-            ApplicationBarMenuItem appBarMenuItem = new ApplicationBarMenuItem(AppResources.AppBarMenuItemText);
-            appBarMenuItem.Click += appBarMenuItem_Click;
-            ApplicationBar.MenuItems.Add(appBarMenuItem);
-        }
-
-        void appBarMenuItem_Click(object sender, EventArgs e)
+        private void ApplicationBarIconButton_Click(object sender, EventArgs e)
         {
             progressBar.Visibility = System.Windows.Visibility.Visible;
             this.SaveCurrentImage();
+                
         }
 
     }

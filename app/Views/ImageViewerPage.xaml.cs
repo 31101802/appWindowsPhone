@@ -61,7 +61,7 @@ namespace QuierobesarteApp.Views
         {
             base.OnNavigatedTo(e);
 
-       
+            _pageNumber = 1;
 
             NavigationContext.QueryString.TryGetValue("weddingId", out _weddingId);
 
@@ -93,30 +93,34 @@ namespace QuierobesarteApp.Views
             Debug.WriteLine("Searching for {0}", page);
             _isLoading = true;
             var client = Utils.GetClient();
-            var url = "http://" + App.baseUrl + "/api/images/" + HttpUtility.UrlEncode(_weddingId) + "?page=" + page + "&numItems=18";
+            var url = "http://" + App.baseUrl + "/api/images/" + HttpUtility.UrlEncode(_weddingId) + "?page=" + page +
+                      "&numItems=18";
 
-            HttpResponseMessage getresponse = await client.GetAsync(url);
-            string json = await getresponse.Content.ReadAsStringAsync();
-            var images = JsonConvert.DeserializeObject<List<ImageDto>>(json);
-
-            foreach (var item in images)
+            try
             {
-                item.originalPath = "http://" + App.baseUrl + item.originalPath;
-                item.thumbnailPath = "http://" + App.baseUrl + item.thumbnailPath;
+                var getresponse = await client.GetAsync(url);
+                string json = await getresponse.Content.ReadAsStringAsync();
+                var images = JsonConvert.DeserializeObject<List<ImageDto>>(json);
+
+                foreach (var item in images)
+                {
+                    item.originalPath = "http://" + App.baseUrl + item.originalPath;
+                    item.thumbnailPath = "http://" + App.baseUrl + item.thumbnailPath;
+                }
+
+                var mainViewModel = ServiceLocator.Current.GetInstance<MainViewModel>();
+
+
+                images.ForEach((image) => mainViewModel.Images.Add(image));
+
+                _isLoading = false;
+            }
+            catch
+            {
+                _isLoading = false;
             }
 
-            var mainViewModel = ServiceLocator.Current.GetInstance<MainViewModel>();
-
-
-            images.ForEach((image) =>
-            {
-                //if (!mainViewModel.Images.Any(i=>i.id==image.id))
-                //{
-                //   mainViewModel.Images.Insert(0,image);
-                //}
-                mainViewModel.Images.Add(image);
-            });
-            _isLoading = false;
+           
 
         }
 

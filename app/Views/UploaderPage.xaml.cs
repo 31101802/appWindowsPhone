@@ -113,7 +113,14 @@ namespace QuierobesarteApp.Views
 
                     WriteableBitmap writeableBitmap = new WriteableBitmap(bitmapImage);
                     MemoryStream ms = new MemoryStream();
-                    writeableBitmap.SaveJpeg(ms, (int)resizeWidth, (int)resizeHeight, 0, 80);
+                    if (Path.GetExtension(e.OriginalFileName) == ".png")
+                    {
+                        writeableBitmap.WritePNG(ms, 80);
+                    }
+                    if (Path.GetExtension(e.OriginalFileName) == ".jpg")
+                    {
+                        writeableBitmap.SaveJpeg(ms, (int)resizeWidth, (int)resizeHeight, 0, 80);
+                    }
                     UploadFile(ms);
 
                 }

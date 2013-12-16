@@ -4,6 +4,7 @@ using System.Resources;
 using System.Windows;
 using System.Windows.Markup;
 using System.Windows.Navigation;
+using System.Windows.Threading;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using QuierobesarteApp.Resources;
@@ -103,7 +104,6 @@ namespace QuierobesarteApp
         // This code will not execute when the application is first launched
         private async void Application_Activated(object sender, ActivatedEventArgs e)
         {
-            await Navigate();
         }
 
         // Code to execute when the application is deactivated (sent to background)
@@ -141,7 +141,11 @@ namespace QuierobesarteApp
                 navigationUrl = new Uri("/MainPAge.xaml", UriKind.Relative);
             }
 
-            RootFrame.Navigate(navigationUrl);
+
+            RootFrame.Dispatcher.BeginInvoke(() =>
+            {
+                RootFrame.Navigate(navigationUrl);
+            });
         }
 
         // Code to execute if a navigation fails
